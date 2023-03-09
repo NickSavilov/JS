@@ -3,117 +3,133 @@
   <head>
     <meta charset="UTF-8" />
     <title>Homework</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
-    />
-    <style>
-      .message {
-        width: 150px;
-        padding: 20px;
-        background: lightgoldenrodyellow;
-        border: 1px solid orange;
-        visibility: hidden;
-      }
-
-      .error {
-        border: 0.3rem solid red;
-      }
-    </style>
   </head>
 
   <body>
     <!--
-Обязательное задание.
+Необязательное задание.
 Выполнить все задачи в теге script. Комментарии, в которых написаны задачи, не
 стирать, код с решением задачи пишем под комментарием.
 -->
 
-    <input id="from" type="text" />
-    В инпуте написано: <span></span>
+    <p class="super_element">Привет</p>
+
+    <img src="https://placeimg.com/50/50/animals" alt="" />
+    <img src="https://placeimg.com/50/50/arch" alt="" />
+    <img src="https://placeimg.com/50/50/nature" alt="" />
+    <img src="https://placeimg.com/50/50/people" alt="" />
+    <img src="https://placeimg.com/50/50/tech" alt="" />
+    <img src="https://placeimg.com/50/50/tech/grayscale" alt="" />
+    <img src="https://placeimg.com/50/50/tech/sepia" alt="" />
 
     <br />
 
-    <button class="messageBtn">Показать блок</button>
-    <div class="message">Привет :)</div>
+    <button>Кнопка</button>
+    <button class="super_element">Кнопка с классом btn</button>
+    <button>Кнопка</button>
 
     <br />
 
-    <form>
-      <label>
-        Первый инпут:
-        <input class="form-control" type="text" />
-      </label>
-      <br />
-      <br />
-      <label>
-        Второй инпут:
-        <select class="form-control">
-          <option value=""></option>
-          <option value="1">Один</option>
-          <option value="2">Два</option>
-        </select>
-      </label>
-      <br />
-      <br />
-      <button>Отправить</button>
-    </form>
+    <textarea></textarea>
+
+    <br />
+
+    <ul>
+      <li>
+        <button>Кнопка 1</button>
+      </li>
+      <li>
+        <button>Кнопка 2</button>
+      </li>
+      <li>
+        <button>Кнопка 3</button>
+      </li>
+      <li>
+        <button>Кнопка 4</button>
+      </li>
+    </ul>
 
     <script>
       "use strict";
 
       /*
-    1. При изменении значения в input с id="from", значение содержащееся в нем
-    должно моментально отображаться в span. То есть при печати в input'е тег span
-    также должен меняться.
-    */
-      const spanEl = document.querySelector("span");
-      document.querySelector("input").addEventListener("input", (e) => {
-        spanEl.textContent = e.target.value;
+        1. Необходимо вывести сообщение в консоль "все теги прогрузились", 
+        когда все теги будут созданы браузером.
+        */
+
+      document.addEventListener("DOMContentLoaded", () =>
+        console.log("все теги прогрузились")
+      );
+
+      /*
+        2. Необходимо вывести сообщение в консоль "страница загрузилась", 
+        когда все ресурсы страницы будут загружены.
+        */
+
+      window.addEventListener("load", () =>
+        console.log("страница загрузилась")
+      );
+
+      /*
+        3. При клике на какой-либо тег на странице в консоль должно выводиться
+        сообщение наподобие:
+        Класс "super_element" присутствует в элементе "div".
+        сообщение должно определять присутствует или отсутствует класс
+        "super_element" у элемента, а также выводить в нижнем регистре верный
+        тег в данной строке, по которому был совершен клик.
+        Необходимо использовать делегирование.
+        */
+
+      document.addEventListener("click", (event) => {
+        const containStr = event.target.classList.contains("super_element")
+          ? "присутствует"
+          : "отсутствует";
+        console.log(`
+            Класс "super_element" ${containStr} в элементе 
+            "${event.target.tagName.toLowerCase()}".`);
       });
 
       /*
-    2. При клике на кнопку с классом messageBtn необходимо элементу с классом
-    message:
-    1) добавить два класса: animate__animated и animate__fadeInLeftBig
-    2) поставить данному элементу стиль visibility в значение 'visible'.
-     */
-      const message = document.querySelector(".message");
-      document.querySelector("button").addEventListener("click", () => {
-        message.style.visibility = "visible";
-        message.classList.add("animate__animated", "animate__fadeInLeftBig");
-      });
+        4. Сделайте, чтобы при наведении на textarea в консоли появлялось
+        сообщение: "Вы навели на textarea."
+         */
+
+      document
+        .querySelector("textarea")
+        .addEventListener("mouseover", () =>
+          console.log("Вы навели на textarea.")
+        );
 
       /*
-    3. Необходимо при отправке формы проверить, заполнены ли все поля в этой
-    форме. Если какое-либо поле не заполнено, форма не должна отправляться, также
-    должны быть подсвечены незаполненные поля (необходимо поставить класс error
-    незаполненным полям).
-    Как только пользователь начинает заполнять какое-либо поле, необходимо,
-    при вводе в данное поле, произвести проверку:
-    Если поле пустое, необходимо данное поле подсветить (поставить класс error
-    данному полю).
-    Если поле было чем-либо заполнено, подсветку (класс error) необходимо убрать.
-     */
-      const formEl = document.querySelector("form");
-      const formControlEls = formEl.querySelectorAll("input, select");
-      formEl.addEventListener("submit", (event) => {
-        formControlEls.forEach((formControlEl) => {
-          if (formControlEl.value === "") {
-            formControlEl.classList.add("error");
-            event.preventDefault();
-          }
-        });
-      });
+        5. Необходимо повесить событие клика на тег ul. В обработчике события в
+        консоль необходимо выводить текст, который записан внутри элемента 
+        кнопки, по которой был произведен клик.
+        Если клик был не по кнопке, то ничего выводить не нужно.
+        Необходимо использовать делегирование.
+         */
 
-      formEl.addEventListener("input", (event) => {
-        if (!event.target.classList.contains("form-control")) {
+      document.querySelector("ul").addEventListener("click", (event) => {
+        if (event.target.tagName !== "BUTTON") {
           return;
         }
-        event.target.value === ""
-          ? event.target.classList.add("error")
-          : event.target.classList.remove("error");
+        console.log(event.target.textContent);
       });
+
+      /*
+        6. Вопрос: Почему в console.log пишется сначала текст из 5 задания и 
+        только потом выводится текст из 3 задания, если мы кликаем по кнопкам 
+        в ul? Ответ необходимо написать здесь же, под этим комментарием, 
+        своими словами.
+        */
+
+      /*
+        7. С помощью JS необходимо изменить цвет заднего фона каждого 
+        второго тега li.
+        */
+
+      document
+        .querySelectorAll("li:nth-child(2n)")
+        .forEach((el) => (el.style.backgroundColor = "red"));
     </script>
   </body>
 </html>
