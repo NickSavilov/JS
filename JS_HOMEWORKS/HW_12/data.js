@@ -1,58 +1,64 @@
-"use strict";
-
-function getProductsList() {
-  return JSON.parse(json).goods;
-}
-
-function getProductsObject() {
-  return JSON.parse(json).goods.reduce((acc, product) => {
-    return { ...acc, [product.id]: product };
-  }, {});
-}
-
-const json = `{
-  "goods": [
+const data = 
+[
     {
-      "id": "04a57766-c599-4366-8dc4-89ff1ccd3b14",
-      "name": "Пуховик",
-      "description": "Демисезонный пуховик для мужчин.",
-      "price": 3899,
-      "img": "images/featured/1.jpg"
+        "id": "1",
+        "name": "ELLERY X M'O CAPSULE 1",
+        "img": "./img/item__1.svg",
+        "description": "Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.",
+        "price": "52.00",
+        "color": "blue",
+        "size": "XXL",
+        "quantity": "10",
     },
     {
-      "id": "61977551-efb2-4f6a-a6ea-da9c3b24798c",
-      "name": "Офисный костюм",
-      "description": "Чкрный офисный костюм для модной дамы",
-      "price": 10099,
-      "img": "images/featured/2.jpg"
+        "id": "2",
+        "name": "ELLERY X M'O CAPSULE 2",
+        "img": "./img/item__2.svg",
+        "description": "Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.",
+        "price": "152.00",
+        "color": "black",
+        "size": "L",
+        "quantity": "20",
     },
     {
-      "id": "5bf21210-6463-49ae-a8c4-4a9ff10002bf",
-      "name": "Свитшот",
-      "description": "Свитшот с геометрическим узором не оставит равнодушым ни одного покупателя.",
-      "price": 3999,
-      "img": "images/featured/3.jpg"
+        "id": "3",
+        "name": "ELLERY X M'O CAPSULE 3",
+        "img": "./img/item__3.svg",
+        "description": "Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.",
+        "price": "252.00",
+        "color": "red",
+        "size": "XL",
+        "quantity": "30",
     },
     {
-      "id": "4886ba5c-97d2-4ae4-bcff-b18a86e5cf37",
-      "name": "Футболка",
-      "description": "Здесь может быть ваша реклама",
-      "price": 6999,
-      "img": "images/featured/4.jpg"
+        "id": "4",
+        "name": "ELLERY X M'O CAPSULE 4",
+        "img": "./img/item__4.svg",
+        "description": "Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.",
+        "price": "352.00",
+        "color": "yellow",
+        "size": "M",
+        "quantity": "40",
     },
     {
-      "id": "27bca31f-aac1-4f91-a309-c262046a3d23",
-      "name": "Пиджак",
-      "description": "Классический пиджак из синтетики",
-      "price": 8999,
-      "img": "images/featured/5.jpg"
+        "id": "5",
+        "name": "ELLERY X M'O CAPSULE 5",
+        "img": "./img/item__5.svg",
+        "description": "Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.",
+        "price": "452.00",
+        "color": "white",
+        "size": "S",
+        "quantity": "50",
     },
     {
-      "id": "f92016c2-5b27-441d-b2e7-b716e2ad63ea",
-      "name": "Рубашка",
-      "description": "Рубашка для рыбалки",
-      "price": 9999,
-      "img": "images/featured/6.jpg"
-    }
-  ]
-}`;
+        "id": "6",
+        "name": "ELLERY X M'O CAPSULE 6",
+        "img": "./img/item__6.svg",
+        "description": "Known for her sculptural takes on traditional tailoring, Australian arbiter of cool Kym Ellery teams up with Moda Operandi.",
+        "price": "552.00",
+        "color": "gray",
+        "size": "XL",
+        "quantity": "60",
+    },
+];
+const productDataJson = JSON.stringify(data);
