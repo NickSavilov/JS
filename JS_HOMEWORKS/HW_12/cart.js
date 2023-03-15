@@ -1,5 +1,5 @@
 const templateCart = document.querySelector('.template__cart').innerHTML;
-const cartData = [];// корзина
+const cartData = [];
 
 
 document.querySelector('body').addEventListener('click', (ev) => {

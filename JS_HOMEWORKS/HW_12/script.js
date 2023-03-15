@@ -13,15 +13,15 @@ class Templator {
         
         while (match = templateVariableRe.exec(this._template)) {
             const variableName = match[1].trim();
-            if (!variableName) {  // Вдруг там просто пустые скобки
+            if (!variableName) {  
                 continue;
             }
             const data = compObj[variableName];
 
             if (typeof data === 'function') {
-                window[variableName] = data; // Сохранили функцию в window
-                result = result.replace(new RegExp(match[0], 'gi'), `window.${variableName}()`); // Использовали
-                continue // Потому что мы уже обработали функцию — идём дальше
+                window[variableName] = data; 
+                result = result.replace(new RegExp(match[0], 'gi'), `window.${variableName}()`); 
+                continue 
             }
 
             result = result.replace(new RegExp(match[0], 'gi'), data);
